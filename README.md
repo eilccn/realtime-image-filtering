@@ -35,52 +35,54 @@ c = cartoonized
 ### Original Image
 ![Original](image_samples/lamp0.png)
 
+Description: Original unfiltered image.
+
 ### cvtColor() Greyscale
 ![Greyscale](image_samples/lamp1.png)
 
-Description: Original image (left) and cvtColor) greyscale image (right). The OpenCV built-in cvtColor() function was used to apply a greyscale filter to the image. The color space conversion code used was cv::COLOR_BGR2GRAY. 
+Description: The OpenCV built-in cvtColor() function was used to apply a greyscale filter to the image. The color space conversion code used was cv::COLOR_BGR2GRAY. 
 
 ### Average Greyscale
 ![Avg Greyscale](image_samples/lamp2.png)
 
-Description: Original image (left) and alternative greyscale image (right). The average color was computed by obtaining the sum of all red, green, and blue color channel pixels then dividing by 3. 
+Description: The average color was computed by obtaining the sum of all red, green, and blue color channel pixels then dividing by 3. 
 
 ### Gaussian Blur
 ![Blur](image_samples/lamp3.png)
 
-Description: Original image (left) and gaussian blur image (right). A 5x5 gaussian blur filter was implemented with two 1x5 separable vertical and horizontal kernels [ 1 2 4 2 1 ]. Separable filters can be used for symmetric filters in order to reduce the number of multiples and adds with convolution. The horizontal separable filter was first applied to each pixel in the image via convolution, then the vertical separable filter was applied via convolution to the output from the first filter. 
+Description: A 5x5 gaussian blur filter was implemented with two 1x5 separable vertical and horizontal kernels [ 1 2 4 2 1 ]. Separable filters can be used for symmetric filters in order to reduce the number of multiples and adds with convolution. The horizontal separable filter was first applied to each pixel in the image via convolution, then the vertical separable filter was applied via convolution to the output from the first filter. 
 
 ### Sobel X
 ![Sobel X](image_samples/lamp4.png)
 
-Description: Original image (left) and sobel x image (right). The sobel x filter is a symmetric filter that detects vertical edges by applying two 1x3 separable filters, a positive filter [ 1 2 1 ] horizontally and a negative filter [ -1 0 1 ] vertically. The convolution from these kernels detects edges by finding large changes in intensity or color in the x direction. Anywhere there is an edge, the calculated pixel value will be positive. The output is a signed short CV_16SC3 image. 
+Description: The sobel x filter is a symmetric filter that detects vertical edges by applying two 1x3 separable filters, a positive filter [ 1 2 1 ] horizontally and a negative filter [ -1 0 1 ] vertically. The convolution from these kernels detects edges by finding large changes in intensity or color in the x direction. Anywhere there is an edge, the calculated pixel value will be positive. The output is a signed short CV_16SC3 image. 
 
 ### Sobel Y
 ![Sobel Y](image_samples/lamp5.png)
 
-Description: Original image (left) and sobel y image (right). The sobel y filter is a symmetric filter that detects horizontal edges by applying two 1x3 separable filters, a negative filter [ -1 0 1 ] horizontally and a positive filter [ 1 2 1 ] vertically. The convolution from these kernels detects edges by finding large changes in intensity or color in the y direction. Anywhere there is an edge, the calculated pixel value will be positive. The output is a signed short CV_16SC3 image. 
+Description: The sobel y filter is a symmetric filter that detects horizontal edges by applying two 1x3 separable filters, a negative filter [ -1 0 1 ] horizontally and a positive filter [ 1 2 1 ] vertically. The convolution from these kernels detects edges by finding large changes in intensity or color in the y direction. Anywhere there is an edge, the calculated pixel value will be positive. The output is a signed short CV_16SC3 image. 
 
 ### Gradient Magnitude
 ![Gradient](image_samples/lamp6.png)
 
-Description: Original image (left) and gradient magnitude image (right). The gradient magnitude filter takes in the CV_16SC3 outputs from the sobel x and sobel y functions as parameters and generates the gradient magnitude by using Euclidean distance for magnitude: I = sqrt( sx*sx + sy*sy ). By combining the sobel x and sobel y outputs, we are now able to obtain an output that detects all edges from the x and y directions. 
+Description: The gradient magnitude filter takes in the CV_16SC3 outputs from the sobel x and sobel y functions as parameters and generates the gradient magnitude by using Euclidean distance for magnitude: I = sqrt( sx*sx + sy*sy ). By combining the sobel x and sobel y outputs, we are now able to obtain an output that detects all edges from the x and y directions. 
 
 ### Blur and Quantize
 ![Blur and Quantize](image_samples/lamp7.png)
 
-Description: Original image (left) and blur and quantized image (right). The blur and quantize filter first calls the previously defined blur function and blurs the image. It then quantizes the image into a fixed number of levels, which is taken in as a parameter. When each color channel is quantized into a certain number of levels, it reduces the number of colors required to display the image. In other words, we reduce the 255 possible color clusters or shades of red, green, or blue by dividing 255 by the number of levels. We then take a color channel value, x, and calculate xt = x / (255/levels), then xf = xt * (255/levels). After computing this for each pixel and each color channel, the image should have levels**3 possible color values.
+Description: The blur and quantize filter first calls the previously defined blur function and blurs the image. It then quantizes the image into a fixed number of levels, which is taken in as a parameter. When each color channel is quantized into a certain number of levels, it reduces the number of colors required to display the image. In other words, we reduce the 255 possible color clusters or shades of red, green, or blue by dividing 255 by the number of levels. We then take a color channel value, x, and calculate xt = x / (255/levels), then xf = xt * (255/levels). After computing this for each pixel and each color channel, the image should have levels**3 possible color values.
 
 ### Cartoonized
 ![Cartoon](image_samples/lamp8.png)
 
 Cartoon video clip: https://drive.google.com/file/d/1VH6HbUszX0352z7_PlvPN_wfrOIJg-UF/view?usp=sharing
 
-Description: Original image (left) and cartoon filter image (right). The cartoon filter first blurs and quantizes the image by calling the previously defined blur and quantize filter function. It then calls the gradient magnitude image in order to detect all of the edges in the image and set each edge pixel black (value = 0) where the magnitude is greater than a magnitude threshold (taken in as a parameter). This makes it so that there appears to be a black or pencil-sketch-like outline around each object in the image. In combination with the blur and quantize filter, which reduces the required color clusters in the image to create a painterly effect, the output is a cartoon-like image.
+Description: The cartoon filter first blurs and quantizes the image by calling the previously defined blur and quantize filter function. It then calls the gradient magnitude image in order to detect all of the edges in the image and set each edge pixel black (value = 0) where the magnitude is greater than a magnitude threshold (taken in as a parameter). This makes it so that there appears to be a black or pencil-sketch-like outline around each object in the image. In combination with the blur and quantize filter, which reduces the required color clusters in the image to create a painterly effect, the output is a cartoon-like image.
 
 ### Custom Greyscale with White Outline Filter
 ![Custom](image_samples/lamp9.png)
 
-Description: Original image (left) and custom filter (right). This filter attempts to create a variation of the cartoon filter output. It first uses the previously defined greyscale filter function to make the image greyscale. It then uses the gradient magnitude filter function to turn pixels white (value = 255) where the magnitude is greater than a magnitude threshold. The resulting output is a greyscale image that creates white outlines where there are edges. 
+Description: This filter attempts to create a variation of the cartoon filter output. It first uses the previously defined greyscale filter function to make the image greyscale. It then uses the gradient magnitude filter function to turn pixels white (value = 255) where the magnitude is greater than a magnitude threshold. The resulting output is a greyscale image that creates white outlines where there are edges. 
 
 ### Khoury Wiki
 https://wiki.khoury.northeastern.edu/display/~eilccn/CS5330+Project+1+Wiki 
