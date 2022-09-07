@@ -15,8 +15,8 @@ For loops are used for accessing each pixel in cv::Mat images, highlighting the 
 3. **If using Visual Studio Code skip to step 6.** Otherwise, create a directory within your "proj1" directory called "build."<br />
 4. If using CMake, while inside the "build" directory enter "cmake .." in the command line followed by "make." <br />
 5. You should now be able to run the code by entering "./vid_display" in the command line. <br />
-6. Alternative to steps 3-5 if using Visual Studio Code: Compile and create "build" folder by using the "CMake Tools" extension, cd into the build folder, then enter "./vid_display to run the program. <br />
-7. Refer to keypress definitions below 
+6. **Alternative to steps 3-5 if using Visual Studio Code:** Compile by using the "CMake Tools" extension, cd into the build folder, then enter "./vid_display to run the program. <br />
+7. Refer to keypress definitions below.
 
 ### Keypress Definitions:
 ```
