@@ -10,7 +10,7 @@ For loops are used for accessing each pixel in cv::Mat images, highlighting the 
 
 **NOTE: All necessary files for the real-time image filtering system are in the folder called "vid_display." Please ignore the "img_display" folder which consists of demo code.**
 
-1. Place all files from the "vid_display" directory (filter.cpp, filter.h, vidDisplay.cpp) into a directory (i.e. assume it's called "vid_display") <br />
+1. Place all files from the "vid_display" folder into an empty directory (i.e. assume it's called "vid_display") <br />
 2. You may download the CMake compiler then add your own CMakeLists.txt file to your directory for compiling OR you may opt to use a different compiling method.
 3. **If using Visual Studio Code skip to step 6.** Otherwise, create a directory within your "proj1" directory called "build."<br />
 4. If using CMake, while inside the "build" directory enter "cmake .." in the command line followed by "make." <br />
