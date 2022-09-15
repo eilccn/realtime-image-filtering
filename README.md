@@ -88,6 +88,6 @@ Description: The cartoon filter first blurs and quantizes the image by calling t
 
 Description: This filter attempts to create a variation of the cartoon filter output. It first uses the previously defined greyscale filter function to make the image greyscale. It then uses the gradient magnitude filter function to turn pixels white (value = 255) where the magnitude is greater than a magnitude threshold. The resulting output is a greyscale image that creates white outlines where there are edges. 
 
-### Khoury Wiki
-https://wiki.khoury.northeastern.edu/display/~eilccn/CS5330+Project+1+Wiki 
+###### Khoury Wiki
+[Khoury Wiki Report](https://wiki.khoury.northeastern.edu/display/~eilccn/CS5330+Project+1+Wiki) 
 
